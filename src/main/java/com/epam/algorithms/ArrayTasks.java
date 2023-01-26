@@ -115,42 +115,15 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]] arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        for (int[] subArr : arr) {
-            for (int i = 0; i < subArr.length - 1; i++) {
-                for (int j = i + 1; j < subArr.length; j++) {
-                    if (subArr[i] > subArr[j]) {
-                        int temp = subArr[i];
-                        subArr[i] = subArr[j];
-                        subArr[j] = temp;
-                    }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length-1; j++) {
+                if (arr[j].length>arr[j+1].length){
+                    int[] temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
                 }
-            }
-        }
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i].length > arr[j].length) {
-                    int[] temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-//                if (arr[i].length == arr[j].length&&getEquality(arr[i],arr[j])){
-//                    int[] temp = arr[i];
-//                    arr[i] = arr[j];
-//                    arr[j] = temp;
-//                }
             }
         }
         return arr;
-    }
-
-    public boolean getEquality(int[] arr1,int[] arr2){
-        int length=arr1.length;
-        for (int i=0;i<length;i++){
-            if (arr1[i]>arr2[i])
-                return true;
-            if (arr1[i]<arr2[i])
-                return false;
-        }
-        return true;
     }
 }
